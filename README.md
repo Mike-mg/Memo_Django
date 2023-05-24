@@ -14,7 +14,7 @@
 
 5. Activer l'environnement du projet  
 `pipenv shell`  
----  
+
 ## Installation ( Python / Django )  
 #### Installation de Python  
 - Python est installé par defaut sur Linux\Mac  
@@ -26,7 +26,7 @@
 `pipenv install django`  
 - Verifier qu'il soit bien installé  
 `django-admin --version`  
----  
+
 ## Création d'un projet Django
 - Commande de création du projet  
 `django-admin startproject nom_du_projet`  
@@ -65,7 +65,7 @@
 
 - mysite/wsgi.py  
     > Un point d’entrée pour les serveurs Web compatibles WSGI pour déployer votre projet. Voir Comment déployer avec WSGI pour plus de détails  
----  
+
 ## Le serveur de développement
 - Lancement du serveur ( port par defaut : 8000 )  
 `python manage.py runserver`
@@ -75,8 +75,6 @@
 
 - Modification de l'IP si besoin  
 `python manage.py runserver 0.0.0.0:8000`
----  
----  
 
 
 
