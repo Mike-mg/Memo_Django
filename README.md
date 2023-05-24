@@ -14,7 +14,7 @@
 
 5. Activer l'environnement du projet  
 `pipenv shell`  
-
+---
 ## Installation ( Python / Django )  
 #### Installation de Python  
 - Python est installé par defaut sur Linux\Mac  
@@ -26,8 +26,9 @@
 `pipenv install django`  
 - Verifier qu'il soit bien installé  
 `django-admin --version`  
-
-## Création d'un projet Django
+---
+## Tutoriel : 1ère partie - requêtes et réponses 
+### Création d'un projet Django
 - Commande de création du projet  
 `django-admin startproject nom_du_projet`  
 
@@ -78,8 +79,7 @@
 
 
 
-## Tutoriel  
-* 1ère partie : requêtes et réponses  
+ 
 ---  
 * 2ème partie : les modèles et le site d’administration  
 ---  
