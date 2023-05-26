@@ -38,7 +38,7 @@
 
 #### **- Création d'un projet Django**  
 - Commande de création du projet  
-`django-admin startproject nom_du_projet`  
+`django-admin startproject nom_du_projet .` <-> Attention au "." qui est important a la fin de la ligne  
 
 - Cela va créer un répertoire 'nom_du_projet' dans le répertoire courant  
     > nom_du_projet/  
@@ -103,6 +103,10 @@
     >> views.py  
     >> migrations/  
     >>> _ _init_ _.py  
+
+- Si l'on souhaite installer les applications dans un sous-dossier, il faut le créer avant  
+`mkdir -p monsite/apps/nom_de_application`  
+`django-admin startapp nom_de_application apps/nom_de_application`  
 
 #### **- Les vues**  
 - Les vues se trouve dans le fichier du répertoire de l'application ( views.py )  
