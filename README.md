@@ -1,7 +1,6 @@
 # Memo Django -installation / utilisation ( Gnu/Linux )
 
 ## Création d'un environnement virtuel dans le projet  
-
 - Créer le dossier du projet  
 `mkdir nom_du_projet`  
 
@@ -19,15 +18,12 @@
 ---
 
 ## Installation ( Python / Django )  
-
 **Installation de Python**  
-
 - Python est installé par defaut sur Linux\Mac  
 
 - Windows suivre le lien suivant : https://www.python.org/downloads/  
 
 **Installation de Django**  
-
 - Documentation officielle 4.1 : https://docs.djangoproject.com/fr/4.1/  
 
 - Créer un environnement virtuel de votre projet ( Voir plus haut )  
@@ -40,23 +36,12 @@
 ---
 
 ## Tutoriel : 1ère partie - requêtes et réponses  
-
 **Création d'un projet Django**  
-
 - Création du projet ( l'environnement viruel doit etre activer )  
-    `django-admin startproject nom_du_projet .`  
-    > Attention au "." qui est important a la fin de la ligne. Cela va créer un répertoire 'nom_du_projet' dans le répertoire courant  
-    
-    > nom_du_projet/  
-    >>  manage.py  
-    >> nom_du_projet/  
-    >>>> _ _init_ _.py  
-    >>>> settings.py  
-    >>>> urls.py  
-    >>>> asgi.py  
-    >>>> wsgi.py  
+`django-admin startproject nom_du_projet .`  
+    - Attention au "." a la fin de la commande qui est important. Cela va créer un dossier 'nom_du_projet' dans le dossier courant  
 
-#### ***- Le serveur de développement***  
+**Le serveur de développement**    
 - Lancement du serveur ( port par defaut : 8000 )  
 `python manage.py runserver`  
 
@@ -66,7 +51,7 @@
 - Modification de l'IP si besoin  
 `python manage.py runserver 0.0.0.0:8000`  
 
-#### ***- Les applications***
+**Les applications**
 - Quelle est la différence entre un projet et une application ?  
     - Une application est une application Web qui fait quelque chose – par exemple un système de blog, une base de données publique ou une petite application  
 
@@ -76,24 +61,14 @@
 
 - Création de l'application  
 `django-admin startapp nom_de_application`  
-
-- Cela va créer un répertoire 'nom_de_application' dans le répertoire courant  
-    > nom_de_application/  
-    >> _ _init_ _.py  
-    >> admin.py  
-    >> apps.py  
-    >> models.py  
-    >> tests.py  
-    >> views.py  
-    >> migrations/  
-    >>> _ _init_ _.py  
+   - Cela va créer un dossier 'nom_de_application' dans le dossier courant  
 
 - Si l'on souhaite installer les applications dans un sous-dossier, il faut le créer avant  
 `mkdir -p monsite/apps/nom_de_application`  
 `django-admin startapp nom_de_application apps/nom_de_application`  
 
 #### **- Les vues**  
-- Les vues se trouve dans le fichier du répertoire de l'application ( views.py )  
+- Les vues se trouve dans le fichier du dossier de l'application ( views.py )  
     - Ex de fichier qui affiche 'Hello World !'
         ```
         from django.http import HttpResponse  
@@ -102,7 +77,7 @@
             return HttpResponse("Hello, world !")  
         ```
 
-- Pour créer un URLconf dans le répertoire polls, créez un fichier nommé urls.py. Votre répertoire d’application devrait maintenant ressembler à ceci :  
+- Pour créer un URLconf dans le dossier polls, créez un fichier nommé urls.py. Votre dossier d’application devrait maintenant ressembler à ceci :  
 `mkdir urls.py`  
 
 - Vous devriez avoir ceci  
@@ -170,7 +145,7 @@
     ```  
     - ENGINE : Leconnecteur de la base de donnée  
     
-    - NAME :  Le nom de votre base de données. Si vous utilisez SQLite, la base de données sera un fichier sur votre ordinateur. Dans ce cas, NAME doit être le chemin absolu complet de celui-ci, y compris le nom de fichier. La valeur par défaut, BASE_DIR / 'db.sqlite3', stocke ce fichier dans le répertoire de votre projet  
+    - NAME :  Le nom de votre base de données. Si vous utilisez SQLite, la base de données sera un fichier sur votre ordinateur. Dans ce cas, NAME doit être le chemin absolu complet de celui-ci, y compris le nom de fichier. La valeur par défaut, BASE_DIR / 'db.sqlite3', stocke ce fichier dans le dossier de votre projet  
 
     - Si vous utilisez une autre base de données que SQLite, des réglages supplémentaires doivent être indiqués, comme USER, PASSWORD ou HOST. Pour plus de détails, consultez la documentation de référence de DATABASES ci-dessous  
         - https://docs.djangoproject.com/fr/4.1/ref/settings/#std-setting-DATABASES  
