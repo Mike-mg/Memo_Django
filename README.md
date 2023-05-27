@@ -128,7 +128,7 @@
     >> apps.py  
     >> models.py  
     >> tests.py  
-    >> urls.py
+    >> urls.py  
     >> views.py  
     >> migrations/  
     >>> _ _init_ _.py  
@@ -170,9 +170,48 @@
 
 - Paramètre de path() : name  
     - Le nommage des URL permet de les référencer de manière non ambiguë depuis d’autres portions de code Django, en particulier depuis les gabarits. Cette fonctionnalité puissante permet d’effectuer des changements globaux dans les modèles d’URL de votre projet en ne modifiant qu’un seul fichier.
+---
+## Tutoriel : 2ème partie : les modèles et le site d’administration  
+
+#### **- Configuration de la base de données**  
+- Parametrer la base donnée avec le fichier monsite/settings.py avec la variable DATABASES qui est un dictionnaire  
+
+    ```
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+    ```  
+    - ENGINE : Leconnecteur de la base de donnée  
+    - NAME :  Le nom de votre base de données. Si vous utilisez SQLite, la base de données sera un fichier sur votre ordinateur. Dans ce cas, NAME doit être le chemin absolu complet de celui-ci, y compris le nom de fichier. La valeur par défaut, BASE_DIR / 'db.sqlite3', stocke ce fichier dans le répertoire de votre projet  
+
+    - Si vous utilisez une autre base de données que SQLite, des réglages supplémentaires doivent être indiqués, comme USER, PASSWORD ou HOST. Pour plus de détails, consultez la documentation de référence de DATABASES ci-dessous  
+        - https://docs.djangoproject.com/fr/4.1/ref/settings/#std-setting-DATABASES  
+
+- Définir le bon TIME_ZONE  
+    - France : CET  
+
+- Reglage INSTALLED_APPS  
+    - C'est ici qu'il faudra ajouter les nouvelles applications créées  
+
+- Les migrations  
+    - La commande migrate examine le réglage INSTALLED_APPS et crée les tables de base de données nécessaires en fonction des réglages de base de données dans votre fichier mysite/settings.py et des migrations de base de données contenues dans l’application. Vous verrez apparaître un message pour chaque migration appliquée  
+
+#### **- Création des modèles**  
+#### **- Activation des modèles**  
+#### **- Jouer avec l’interface de programmation (API)**  
+#### **- Introduction au site d’administration de Django**  
+#### **- Configuration de la base de données**  
+- Création d’un utilisateur administrateur  
+- Démarrage du serveur de développement
+- Entrée dans le site d’administration
+- Rendre l’application de sondage modifiable via l’interface d’admin
+- Exploration des fonctionnalités de l’interface d’administration
+
 
 ## Tutoriels non traités  
-- 2ème partie : les modèles et le site d’administration  
 - 3ème partie : vues et gabarits  
 - 4ème partie : formulaires et vues génériques  
 - 5ème partie : tests  
