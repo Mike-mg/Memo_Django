@@ -1,5 +1,7 @@
-# Memo sur l'installation de Django et utilisation des commandes sur Gnu/Linux
-## Créer un environnement virtuel de votre projet  
+# Memo sur l'installation de Django et utilisation ( Gnu/Linux )
+
+## Création d'un environnement virtuel dans le projet  
+
 1. Créer le dossier du projet  
 `mkdir nom_du_projet`  
 
@@ -18,16 +20,20 @@
 
 ## Installation ( Python / Django )  
 
-#### **- Installation de Python**  
+**Installation de Python**  
 
 - Python est installé par defaut sur Linux\Mac  
+
 - Windows suivre le lien suivant : https://www.python.org/downloads/  
 
-#### **- Installation de Django**  
+**Installation de Django**  
+
+- Documentation officielle 4.1  
+    - https://docs.djangoproject.com/fr/4.1/  
 
 - Créer un environnement virtuel de votre projet ( Voir plus haut )  
 
-- Puis installer Django avec la commande suivante  
+- Installation de Django ( Etre dans le dossier du projet et activer l'environnement virtuel )  
 `pipenv install django`  
 
 - Verifier qu'il soit bien installé  
@@ -36,8 +42,9 @@
 
 ## Tutoriel : 1ère partie - requêtes et réponses  
 
-#### **- Création d'un projet Django**  
-- Commande de création du projet  
+### ***- Création d'un projet Django***
+
+- Création du projet ( l'environnement viruel doit etre activer )  
 `django-admin startproject nom_du_projet .` <-> Attention au "." qui est important a la fin de la ligne  
 
 - Cela va créer un répertoire 'nom_du_projet' dans le répertoire courant  
@@ -50,32 +57,7 @@
     >>>> asgi.py  
     >>>> wsgi.py  
 
-#### **- Ces fichiers sont :**  
-- Le premier répertoire racine mysite/  
-    > Est un contenant pour votre projet. Son nom n’a pas d’importance pour Django ; vous pouvez le renommer comme vous voulez  
-
-- manage.py  
-    > Un utilitaire en ligne de commande qui vous permet d’interagir avec ce projet Django de différentes façons. Vous trouverez toutes les informations nécessaires sur manage.py dans django-admin et manage.py  
-
-- Le sous-répertoire mysite/  
-    > Correspond au paquet Python effectif de votre projet. C’est le nom du paquet Python que vous devrez utiliser pour importer ce qu’il contient (par ex. mysite.urls)  
-
-- mysite/_ _init_ _.py  
-    > Un fichier vide qui indique à Python que ce répertoire doit être considéré comme un paquet. Si vous êtes débutant en Python, lisez les informations sur les paquets (en) dans la documentation officielle de Python  
-
-- mysite/settings.py  
-    > Réglages et configuration de ce projet Django. Les réglages de Django vous apprendra tout sur le fonctionnement des réglages  
-- mysite/urls.py  
-
-    > Les déclarations des URL de ce projet Django, une sorte de « table des matières » de votre site Django. Vous pouvez en lire plus sur les URL dans Distribution des URL  
-
-- mysite/asgi.py  
-    > Un point d’entrée pour les serveurs Web compatibles aSGI pour déployer votre projet. Voir Comment déployer avec ASGI pour plus de détails  
-
-- mysite/wsgi.py  
-    > Un point d’entrée pour les serveurs Web compatibles WSGI pour déployer votre projet. Voir Comment déployer avec WSGI pour plus de détails  
-
-#### **- Le serveur de développement**  
+#### ***- Le serveur de développement***  
 - Lancement du serveur ( port par defaut : 8000 )  
 `python manage.py runserver`  
 
@@ -85,11 +67,14 @@
 - Modification de l'IP si besoin  
 `python manage.py runserver 0.0.0.0:8000`  
 
-#### **- Les applications**
+#### ***- Les applications***
 - Quelle est la différence entre un projet et une application ?  
-    - Une application est une application Web qui fait quelque chose – par exemple un système de blog, une base de données publique ou une petite application de sondage  
+    - Une application est une application Web qui fait quelque chose – par exemple un système de blog, une base de données publique ou une petite application  
 
-    - Un projet est un ensemble de réglages et d’applications pour un site Web particulier. Un projet peut contenir plusieurs applications. Une application peut apparaître dans plusieurs projets  
+    - Un projet est un ensemble de réglages et d’applications pour un site Web particulier
+    
+    - Un projet peut contenir plusieurs applications. Une application peut apparaître dans plusieurs projets  
+
 - Création de l'application  
 `django-admin startapp nom_de_application`  
 
