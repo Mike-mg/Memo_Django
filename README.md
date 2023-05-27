@@ -185,6 +185,7 @@
     }
     ```  
     - ENGINE : Leconnecteur de la base de donnée  
+    
     - NAME :  Le nom de votre base de données. Si vous utilisez SQLite, la base de données sera un fichier sur votre ordinateur. Dans ce cas, NAME doit être le chemin absolu complet de celui-ci, y compris le nom de fichier. La valeur par défaut, BASE_DIR / 'db.sqlite3', stocke ce fichier dans le répertoire de votre projet  
 
     - Si vous utilisez une autre base de données que SQLite, des réglages supplémentaires doivent être indiqués, comme USER, PASSWORD ou HOST. Pour plus de détails, consultez la documentation de référence de DATABASES ci-dessous  
@@ -193,17 +194,54 @@
 - Définir le bon TIME_ZONE  
     - France : CET  
 
-- Reglage INSTALLED_APPS  
+- Reglage de INSTALLED_APPS  
     - C'est ici qu'il faudra ajouter les nouvelles applications créées  
 
 - Les migrations  
+`python manage.py migrate`  
     - La commande migrate examine le réglage INSTALLED_APPS et crée les tables de base de données nécessaires en fonction des réglages de base de données dans votre fichier mysite/settings.py et des migrations de base de données contenues dans l’application. Vous verrez apparaître un message pour chaque migration appliquée  
 
 #### **- Création des modèles**  
+- Un modèle est la source d’information unique et définitive pour vos données. 
+
+- Il contient les champs essentiels et le comportement attendu des données que vous stockerez.
+
+- Le but est de définir le modèle des données à un seul endroit, et ensuite de dériver automatiquement ce qui est nécessaire à partir de celui-ci. Ceci inclut les migrations. les migrations sont entièrement dérivées du fichier des modèles et ne sont au fond qu’un historique que Django peut parcourir pour mettre à jour le schéma de la base de données pour qu’il corresponde aux modèles actuels  
+
+- Ces concepts sont représentés par des classes Python. Éditez le fichier polls/models.py de façon à ce qu’il ressemble à ceci  
+    - Eemple avec des 2 modeles 'Question' et 'Choice'  
+
+        ```
+        from django.db import models
+
+
+        class Question(models.Model):
+            question_text = models.CharField(max_length=200)
+            pub_date = models.DateTimeField('date published')
+
+
+        class Choice(models.Model):
+            question = models.ForeignKey(Question, on_delete=models.CASCADE)
+            choice_text = models.CharField(max_length=200)
+            votes = models.IntegerField(default=0)
+        ```
+- Ici, chaque modèle est représenté par une classe qui hérite de django.db.models.Model. Chaque modèle possède des variables de classe, chacune d’entre elles représentant un champ de la base de données pour ce modèle.
+
+- Chaque champ est représenté par une instance d’une classe Field – par exemple, CharField pour les champs de type caractère, et DateTimeField pour les champs date et heure. Cela indique à Django le type de données que contient chaque champ.  
+
+- Le nom de chaque instance de Field (par exemple, question_text ou pub_date) est le nom du champ en interne. Vous l’utiliserez dans votre code Python et votre base de données l’utilisera comme nom de colonne.  
+
+- Vous pouvez utiliser le premier paramètre de position (facultatif) d’un Field pour donner un nom plus lisible au champ. C’est utilisé par le système d’introspection de Django, et aussi pour la documentation. Si ce paramètre est absent, Django utilisera le nom du champ interne. Dans l’exemple, nous n’avons défini qu’un seul nom plus lisible, pour Question.pub_date. Pour tous les autres champs, nous avons considéré que le nom interne était suffisamment lisible.
+
+- Certaines classes Field possèdent des paramètres obligatoires. La classe CharField, par exemple, a besoin d’un attribut max_length. Ce n’est pas seulement utilisé dans le schéma de base de la base de données, mais également pour valider les champs, comme nous allons voir prochainement.
+
+- Un champ Field peut aussi autoriser des paramètres facultatifs ; dans notre cas, nous avons défini à 0 la valeur default de votes.
+
+- Finalement, notez que nous définissons une relation, en utilisant ForeignKey. Cela indique à Django que chaque vote (Choice) n’est relié qu’à une seule Question. Django propose tous les modèles classiques de relations : plusieurs-à-un, plusieurs-à-plusieurs, un-à-un.
+
 #### **- Activation des modèles**  
 #### **- Jouer avec l’interface de programmation (API)**  
 #### **- Introduction au site d’administration de Django**  
-#### **- Configuration de la base de données**  
 - Création d’un utilisateur administrateur  
 - Démarrage du serveur de développement
 - Entrée dans le site d’administration
