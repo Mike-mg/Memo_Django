@@ -61,7 +61,7 @@
 
 - Création de l'application  
 `django-admin startapp nom_de_application`  
-   - Cela va créer un dossier 'nom_de_application' dans le dossier courant  
+    - Cela va créer un dossier 'nom_de_application' dans le dossier courant  
 
 - Si l'on souhaite installer les applications dans un sous-dossier, il faut le créer avant  
 `mkdir -p monsite/apps/nom_de_application`  
