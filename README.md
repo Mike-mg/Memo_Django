@@ -72,6 +72,7 @@
 **Les vues**  
 - Les vues se trouve dans le fichier 'views.py' du dossier de l'application  
     - Ex de fichier qui affiche 'Hello World !'
+
         ```
         from django.http import HttpResponse  
 
@@ -84,7 +85,7 @@
 
 - Dans ce fichier 'urls.py'  
     - Importer 'path' de 'django.urls' et le module des vues
-    - Créer une variable 'urlpatterns' de type liste et y inserer le routage de/des vue(s) comme indiquer ci-dessous grace a 'path'
+    - Créer une variable 'urlpatterns' de type liste et y inserer la/les vue(s) comme indiquer ci-dessous grace a 'path'
 
         ```
         from django.urls import path
@@ -108,9 +109,10 @@ urlpatterns = [
 ]  
 ```  
 ---
+
 ## Tutoriel : 2ème partie : les modèles et le site d’administration  
 
-#### **- Configuration de la base de données**  
+**Configuration de la base de données**  
 - Parametrer la base donnée avec le fichier monsite/settings.py avec la variable DATABASES qui est un dictionnaire  
 
     ```
@@ -138,7 +140,7 @@ urlpatterns = [
 `python manage.py migrate`  
     - La commande migrate examine le réglage INSTALLED_APPS et crée les tables de base de données nécessaires en fonction des réglages de base de données dans votre fichier mysite/settings.py et des migrations de base de données contenues dans l’application. Vous verrez apparaître un message pour chaque migration appliquée  
 
-#### **- Création des modèles**  
+**Création des modèles**  
 - Un modèle est la source d’information unique et définitive pour vos données. 
 
 - Il contient les champs essentiels et le comportement attendu des données que vous stockerez.
