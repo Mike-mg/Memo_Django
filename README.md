@@ -59,16 +59,18 @@
     
     - Un projet peut contenir plusieurs applications. Une application peut apparaître dans plusieurs projets  
 
-- Création de l'application  
+- Création de l'application dans le dossier parent  
 `django-admin startapp nom_de_application`  
     - Cela va créer un dossier 'nom_de_application' dans le dossier courant  
 
-- Si l'on souhaite installer les applications dans un sous-dossier, il faut le créer avant  
-`mkdir -p monsite/apps/nom_de_application`  
-`django-admin startapp nom_de_application apps/nom_de_application`  
+- Création de l'application dans un sous-dossier 'apps' du projet  
+    - Si l'on souhaite installer les applications dans un sous-dossier, il faut le créer avant  
+        `mkdir -p monsite/apps/nom_de_application`  
+    - Ensuite créer l'application  
+        `django-admin startapp nom_de_application apps/nom_de_application`  
 
-#### **- Les vues**  
-- Les vues se trouve dans le fichier du dossier de l'application ( views.py )  
+**Les vues**  
+- Les vues se trouve dans le fichier 'views.py' du dossier de l'application  
     - Ex de fichier qui affiche 'Hello World !'
         ```
         from django.http import HttpResponse  
@@ -77,58 +79,34 @@
             return HttpResponse("Hello, world !")  
         ```
 
-- Pour créer un URLconf dans le dossier polls, créez un fichier nommé urls.py. Votre dossier d’application devrait maintenant ressembler à ceci :  
+- Pour créer un URLconf dans le dossier de l'application, créer un fichier nommé 'urls.py'  
 `mkdir urls.py`  
 
-- Vous devriez avoir ceci  
-    > nom_de_application/  
-    >> _ _init_ _.py  
-    >> admin.py  
-    >> apps.py  
-    >> models.py  
-    >> tests.py  
-    >> urls.py  
-    >> views.py  
-    >> migrations/  
-    >>> _ _init_ _.py  
+- Dans ce fichier 'urls.py'  
+    - Importer 'path' de 'django.urls' et le module des vues
+    - Créer une variable 'urlpatterns' de type liste et y inserer le routage de/des vue(s) comme indiquer ci-dessous grace a 'path'
 
-- Dans le fichier nom_de_application/urls.py, insérez le code suivant  
-    ```
-    from django.urls import path
+        ```
+        from django.urls import path
+        from . import views
 
-    from . import views
+        urlpatterns = [
+            path('', views.index, name='index'),
+        ]
+        ```
 
-    urlpatterns = [
-        path('', views.index, name='index'),
-    ]
-    ```
+- L’étape suivante est de faire pointer le module 'urls.py' du projet vers le module 'urls.py' de l'application  
 
-- L’étape suivante est de faire pointer la configuration d””URL racine vers le module nom_de_application.urls. Dans nom_du_projet/urls.py, ajoutez une importation django.urls.include et insérez un appel include() dans la liste urlpatterns, ce qui donnera  
-    ```
-    from django.contrib import admin
-    from django.urls import include, path
+- Dans nom_du_projet/urls.py, ajoutez une importation django.urls.include et insérez un appel include() dans la liste urlpatterns, ce qui donnera  
+```  
+from django.contrib import admin  
+from django.urls import include, path  
 
-    urlpatterns = [
-        path('nom_de_application/', include('nom_de_application.urls')),
-        path('admin/', admin.site.urls),
-    ]
-    ```  
-
-- La fonction include() permet de référencer d’autres configurations d’URL. Quand Django rencontre un include(), il tronque le bout d’URL qui correspondait jusque là et passe la chaîne de caractères restante à la configuration d’URL incluse pour continuer le traitement.  
-
-- La fonction path() reçoit quatre paramètres, dont deux sont obligatoires : route et view, et deux facultatifs : kwargs et name. À ce stade, il est intéressant d’examiner le rôle de chacun de ces paramètres.
-
-- Paramètre de path() : route  
-    - route est une chaîne contenant un motif d’URL. Lorsqu’il traite une requête, Django commence par le premier motif dans urlpatterns puis continue de parcourir la liste en comparant l’URL reçue avec chaque motif jusqu’à ce qu’il en trouve un qui correspond. Les motifs ne cherchent pas dans les paramètres GET et POST, ni dans le nom de domaine. Par exemple, dans une requête vers https://www.example.com/myapp/, l’URLconf va chercher myapp/. Dans une requête vers https://www.example.com/myapp/?page=3, l’URLconf va aussi chercher myapp/.  
-
-- Paramètre de path() : view  
-    - Lorsque Django trouve un motif correspondant, il appelle la fonction de vue spécifiée, avec un objet HttpRequest comme premier paramètre et toutes les valeurs « capturées » par la route sous forme de paramètres nommés. Nous montrerons cela par un exemple un peu plus loin.
-
-- Paramètre de path() : kwargs  
-    - Des paramètres nommés arbitraires peuvent être transmis dans un dictionnaire vers la vue cible. Nous n’allons pas exploiter cette fonctionnalité dans ce tutoriel.
-
-- Paramètre de path() : name  
-    - Le nommage des URL permet de les référencer de manière non ambiguë depuis d’autres portions de code Django, en particulier depuis les gabarits. Cette fonctionnalité puissante permet d’effectuer des changements globaux dans les modèles d’URL de votre projet en ne modifiant qu’un seul fichier.
+urlpatterns = [  
+    path('nom_de_application/', include('nom_de_application.urls')),  
+    path('admin/', admin.site.urls),  
+]  
+```  
 ---
 ## Tutoriel : 2ème partie : les modèles et le site d’administration  
 
