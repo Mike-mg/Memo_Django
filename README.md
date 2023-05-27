@@ -1,20 +1,20 @@
-# Memo sur l'installation de Django et utilisation ( Gnu/Linux )
+# Memo Django -installation / utilisation ( Gnu/Linux )
 
 ## Création d'un environnement virtuel dans le projet  
 
-1. Créer le dossier du projet  
+- Créer le dossier du projet  
 `mkdir nom_du_projet`  
 
-2. Se rendre dans le dossier du projet  
+- Se rendre dans le dossier du projet  
 `cd nom_du_projet`  
 
-3. Créer un dossier d'environnement ".venv"  
+- Créer un dossier d'environnement ".venv"  
 `mkdir .venv`  
 
-4. Installer l'environnement du projet ( Etre dans le dossier du projet )  
+- Installer l'environnement du projet ( Etre dans le dossier du projet )  
 `pipenv install` 
 
-5. Activer l'environnement du projet  
+- Activer l'environnement du projet  
 `pipenv shell`  
 ---
 
@@ -28,8 +28,7 @@
 
 **Installation de Django**  
 
-- Documentation officielle 4.1  
-    - https://docs.djangoproject.com/fr/4.1/  
+- Documentation officielle 4.1 : https://docs.djangoproject.com/fr/4.1/  
 
 - Créer un environnement virtuel de votre projet ( Voir plus haut )  
 
@@ -42,12 +41,12 @@
 
 ## Tutoriel : 1ère partie - requêtes et réponses  
 
-### ***- Création d'un projet Django***
+**Création d'un projet Django**  
 
 - Création du projet ( l'environnement viruel doit etre activer )  
-`django-admin startproject nom_du_projet .` <-> Attention au "." qui est important a la fin de la ligne  
-
-- Cela va créer un répertoire 'nom_du_projet' dans le répertoire courant  
+    `django-admin startproject nom_du_projet .`  
+    > Attention au "." qui est important a la fin de la ligne. Cela va créer un répertoire 'nom_du_projet' dans le répertoire courant  
+    
     > nom_du_projet/  
     >>  manage.py  
     >> nom_du_projet/  
